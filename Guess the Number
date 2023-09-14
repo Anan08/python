@@ -1,0 +1,31 @@
+#you can change the limit on attempt and max int
+
+import random
+
+
+class Game:
+    def __init__(self, max):
+        self.number = random.randint(1, max)
+        self.guessNum = 0 # can choose 3 times
+        self.guess(max)
+
+
+    def guess(self, max):
+        while self.guessNum < 3:
+            try:
+                userInput = int(input(f"choose the Number {1, max} :\n"))
+                if userInput != self.number:
+                    self.guessNum +=1 
+                    if self.guessNum < 3:
+                        print(f"Wrong, {3-(self.guessNum)} more attempts")
+                    else:
+                        print("Aww, you lose but it's okay")
+
+                else :
+                    print(f'Yeay, you win the game!, the number was {self.number}')
+                    break
+                    
+            except ValueError:
+                print(f'Only Integer from 1-{max}')
+
+play = Game(10)
